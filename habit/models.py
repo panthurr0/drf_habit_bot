@@ -14,42 +14,42 @@ class Habit(models.Model):
     должна расходовать на выполнение больше двух минут.
     """
 
-    user = models.ForeignKey(
+    owner = models.ForeignKey(
         "users.User",
-        help_text='Создатель привычки',
+        verbose_name='Создатель привычки',
         on_delete=models.SET_NULL,
         **NULLABLE
     )
     place = models.CharField(
-        help_text='Место привычки',
+        verbose_name='Место привычки',
         max_length=150,
         **NULLABLE
     )
-    habit_time = models.TimeField(
-        help_text='Время привычки', **NULLABLE
-    )
     action = models.CharField(
-        help_text='Действие', **NULLABLE
+        verbose_name='Действие', **NULLABLE
     )
     is_nice_habit = models.BooleanField(
-        help_text='Признак приятной привычки', **NULLABLE
+        verbose_name='Признак приятной привычки', default=False
     )
     linked_habit = models.OneToOneField(
         'self',
-        help_text="Связанная привычка",
+        verbose_name="Связанная привычка",
         on_delete=models.SET_NULL,
         **NULLABLE
     )
     periodicity = models.SmallIntegerField(
-        help_text='Периодичность в днях',
+        verbose_name='Периодичность в днях',
         default=1,
         **NULLABLE
     )
     reward = models.TextField(
-        help_text='Вознаграждение за выполнение', **NULLABLE
+        verbose_name='Вознаграждение за выполнение', **NULLABLE
+    )
+    habit_time = models.TimeField(
+        verbose_name='Время привычки', **NULLABLE
     )
     complete_time = models.TimeField(
-        help_text='Время выполнения', **NULLABLE
+        verbose_name='Время выполнения', **NULLABLE
     )
     is_public = models.BooleanField(
         verbose_name='Признак публичности', **NULLABLE
