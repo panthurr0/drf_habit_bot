@@ -1,4 +1,3 @@
-from datetime import timedelta
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -32,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'rest_framework_simplejwt',
+    'corsheaders',
 
     # apps
     'habit',
@@ -46,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -135,3 +136,12 @@ REST_FRAMEWORK = {
 #     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
 #     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 # }
+
+CORS_ALLOWED_ORIGINS = [
+    os.getenv('CORS_FRONTEND'),
+    os.getenv('CORS_BACKEND'),
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    os.getenv('CORS_BACKEND'),
+]
