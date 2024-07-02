@@ -24,6 +24,6 @@ class CompleteTimeValidator:
         complete_timedelta = timedelta(hours=complete_time.hour, minutes=complete_time.minute,
                                        seconds=complete_time.second)
 
-        difference = abs(habit_timedelta - complete_timedelta)
+        difference = habit_timedelta - complete_timedelta
         if difference > timedelta(seconds=120):
             raise ValidationError('Разница между habit_time и complete_time должна быть меньше 120 секунд')
