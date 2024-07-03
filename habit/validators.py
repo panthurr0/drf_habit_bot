@@ -20,20 +20,32 @@ class CompleteTimeValidator:
         habit_time = attrs.get('habit_time')
         complete_time = attrs.get('complete_time')
 
-        habit_timedelta = timedelta(hours=habit_time.hour, minutes=habit_time.minute, seconds=habit_time.second)
-        complete_timedelta = timedelta(hours=complete_time.hour, minutes=complete_time.minute,
-                                       seconds=complete_time.second)
-
+        habit_timedelta = timedelta(
+            hours=habit_time.hour,
+            minutes=habit_time.minute,
+            seconds=habit_time.second
+        )
+        complete_timedelta = timedelta(
+            hours=complete_time.hour,
+            minutes=complete_time.minute,
+            seconds=complete_time.second
+        )
         difference = complete_timedelta - habit_timedelta
-        if difference > timedelta(seconds=120):
+
+        if difference.total_seconds() > 120:
             raise ValidationError('Разница между habit_time и complete_time должна быть меньше 120 секунд')
+        elif difference.total_seconds() < 0:
+            raise ValidationError('Разница между habit_time и complete_time отрицательная')
 
 
 class LinkedHabitValidator:
     """ Проверяет, что в связанные привычки вписана приятная привычка """
 
-    def __call__(self, ):
-        pass
+    def __call__(self, attrs):
+        habit_item = attrs.get('linked_habit')
+
+        if habit_item and not habit_item.is_nice_habit:
+            raise ValidationError('В связанные привычки могут попадать только привычки с признаком приятной привычки.')
 
 
 class IsNiceHabitValidator:
@@ -51,5 +63,10 @@ class IsNiceHabitValidator:
 class PeriodicityValidator:
     """ Проверяет, чтобы привычка выполнялась чаще, чем 1 раз в 7 дней """
 
-    def __call__(self, *args, **kwargs):
-        pass
+    def __call__(self, attrs):
+        periodicity = attrs.get('periodicity')
+
+        if periodicity <= 0:
+            raise ValidationError('Значение периодичности должно быть > 0')
+        if periodicity > 7:
+            raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
