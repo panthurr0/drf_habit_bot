@@ -20,22 +20,23 @@ class CompleteTimeValidator:
         habit_time = attrs.get('habit_time')
         complete_time = attrs.get('complete_time')
 
-        habit_timedelta = timedelta(
-            hours=habit_time.hour,
-            minutes=habit_time.minute,
-            seconds=habit_time.second
-        )
-        complete_timedelta = timedelta(
-            hours=complete_time.hour,
-            minutes=complete_time.minute,
-            seconds=complete_time.second
-        )
-        difference = complete_timedelta - habit_timedelta
+        if habit_time and complete_time:
+            habit_timedelta = timedelta(
+                hours=habit_time.hour,
+                minutes=habit_time.minute,
+                seconds=habit_time.second
+            )
+            complete_timedelta = timedelta(
+                hours=complete_time.hour,
+                minutes=complete_time.minute,
+                seconds=complete_time.second
+            )
+            difference = complete_timedelta - habit_timedelta
 
-        if difference.total_seconds() > 120:
-            raise ValidationError('Разница между habit_time и complete_time должна быть меньше 120 секунд')
-        elif difference.total_seconds() < 0:
-            raise ValidationError('Разница между habit_time и complete_time отрицательная')
+            if difference.total_seconds() > 120:
+                raise ValidationError('Разница между habit_time и complete_time должна быть меньше 120 секунд')
+            elif difference.total_seconds() < 0:
+                raise ValidationError('Разница между habit_time и complete_time отрицательная')
 
 
 class LinkedHabitValidator:
@@ -66,7 +67,7 @@ class PeriodicityValidator:
     def __call__(self, attrs):
         periodicity = attrs.get('periodicity')
 
-        if periodicity <= 0:
+        if periodicity and periodicity <= 0:
             raise ValidationError('Значение периодичности должно быть > 0')
-        if periodicity > 7:
+        if periodicity and periodicity > 7:
             raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')

@@ -14,27 +14,27 @@ urlpatterns = [
     path(
         'habit/create',
         HabitCreateApiView.as_view(),
-        name='Habit-create'
+        name='habit-create'
     ),
     path(
         'habit/',
         HabitListApiView.as_view(),
-        name='Habit-list'
+        name='habit-list'
     ),
     path(
         'habit/<int:pk>',
         HabitRetrieveApiView.as_view(),
-        name='Habit-detail'
+        name='habit-detail'
     ),
     path(
         'habit/update/<int:pk>',
         HabitUpdateApiView.as_view(),
-        name='Habit-update'
+        name='habit-update'
     ),
     path(
         'habit/delete/<int:pk>',
         HabitDestroyApiView.as_view(),
-        name='Habit-delete'
+        name='habit-delete'
     ),
 
 ]
