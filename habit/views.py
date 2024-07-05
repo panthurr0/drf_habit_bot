@@ -5,6 +5,7 @@ from rest_framework.generics import (
     RetrieveAPIView,
     UpdateAPIView,
 )
+from rest_framework.permissions import AllowAny
 
 from habit.models import Habit
 from habit.paginators import HabitPaginator
@@ -19,6 +20,15 @@ class HabitCreateApiView(CreateAPIView):
 
 
 class HabitListApiView(ListAPIView):
+    """Выводит привычки с is_public=True для всех пользователей."""
+
+    queryset = Habit.objects.filter(is_public=True)
+    serializer_class = HabitSerializer
+    pagination_class = HabitPaginator
+    # permission_classes = [AllowAny, ]
+
+
+class MyHabitListApiView(ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     pagination_class = HabitPaginator
