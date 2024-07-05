@@ -4,7 +4,7 @@ from rest_framework.exceptions import ValidationError
 
 
 class RewardValidator:
-    """Позволяет выбрать только одно из: linked_habit и reward"""
+    """Позволяет выбрать только одно из: linked_habit и reward."""
 
     def __call__(self, attrs):
         linked_habit = attrs.get("linked_habit")
@@ -16,7 +16,7 @@ class RewardValidator:
 
 
 class CompleteTimeValidator:
-    """Проверяет, что время выполнения < 120 секунд"""
+    """Проверяет, что время выполнения < 120 секунд."""
 
     def __call__(self, attrs):
         habit_time = attrs.get("habit_time")
@@ -46,7 +46,7 @@ class CompleteTimeValidator:
 
 
 class LinkedHabitValidator:
-    """Проверяет, что в связанные привычки вписана приятная привычка"""
+    """Проверяет, что в связанные привычки вписана приятная привычка."""
 
     def __call__(self, attrs):
         habit_item = attrs.get("linked_habit")
@@ -58,7 +58,7 @@ class LinkedHabitValidator:
 
 
 class IsNiceHabitValidator:
-    """Проверяет приятную привычку на вознаграждение или связанную привычку"""
+    """Проверяет приятную привычку на вознаграждение или связанную привычку."""
 
     def __call__(self, attrs):
         is_nice_habit = attrs.get("is_nice_habit")
@@ -72,7 +72,7 @@ class IsNiceHabitValidator:
 
 
 class PeriodicityValidator:
-    """Проверяет, чтобы привычка выполнялась чаще, чем 1 раз в 7 дней"""
+    """Проверяет, чтобы привычка выполнялась чаще, чем 1 раз в 7 дней."""
 
     def __call__(self, attrs):
         periodicity = attrs.get("periodicity")
