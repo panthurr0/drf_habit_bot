@@ -78,6 +78,10 @@ class PeriodicityValidator:
         periodicity = attrs.get("periodicity")
 
         if periodicity and periodicity <= 0:
-            raise ValidationError("Значение периодичности должно быть > 0")
+            raise ValidationError(
+                "Значение периодичности должно быть > 0"
+            )
         if periodicity and periodicity > 7:
-            raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")
+            raise ValidationError(
+                "Нельзя выполнять привычку реже, чем 1 раз в 7 дней."
+            )
