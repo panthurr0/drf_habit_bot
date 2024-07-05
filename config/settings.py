@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -88,6 +89,8 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+STATIC_URL = "static/"
+
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
@@ -123,9 +126,9 @@ CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 CELERY_TIMEZONE = TIME_ZONE
 
-# CELERY_BEAT_SCHEDULE = {
-#     'off-user-is_active': {
-#         'task': 'users.tasks.off_user_is_active',
-#         'schedule': timedelta(days=1),
-#     },
-# }
+CELERY_BEAT_SCHEDULE = {
+    "send_notification": {
+        "task": "habit.tasks.send_notification",
+        "schedule": timedelta(seconds=30),
+    },
+}
