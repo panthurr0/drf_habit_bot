@@ -37,6 +37,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # cors
     "corsheaders.middleware.CorsMiddleware",
 ]
 
@@ -113,11 +114,9 @@ REST_FRAMEWORK = {
 # cors
 CORS_ALLOWED_ORIGINS = [
     os.getenv("CORS_FRONTEND"),
-    os.getenv("CORS_BACKEND"),
 ]
-CSRF_TRUSTED_ORIGINS = [
-    os.getenv("CORS_BACKEND"),
-]
+
+CORS_ALLOW_ALL_ORIGINS = False
 
 # telegram
 TELEGRAM_URL = "https://api.telegram.org/bot"
