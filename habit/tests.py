@@ -12,6 +12,7 @@ class HabitTestCase(APITestCase):
         self.habit = Habit.objects.create(
             action="Лежать", is_nice_habit=True, owner=self.user
         )
+        self.client.force_authenticate(user=self.user)
 
     def test_habit_create(self):
         """Тестирование создания привычки."""
