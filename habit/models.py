@@ -23,7 +23,9 @@ class Habit(models.Model):
     place = models.CharField(
         verbose_name="Место привычки", max_length=150, **NULLABLE
     )
-    action = models.CharField(verbose_name="Действие", **NULLABLE)
+    action = models.CharField(
+        verbose_name="Действие", **NULLABLE
+    )
     is_nice_habit = models.BooleanField(
         verbose_name="Признак приятной привычки", default=False
     )
