@@ -8,54 +8,78 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('habit', '0006_rename_user_habit_owner'),
+        ("habit", "0006_rename_user_habit_owner"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='habit',
-            name='action',
-            field=models.CharField(blank=True, null=True, verbose_name='Действие'),
+            model_name="habit",
+            name="action",
+            field=models.CharField(blank=True, null=True, verbose_name="Действие"),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='complete_time',
-            field=models.TimeField(blank=True, null=True, verbose_name='Время выполнения'),
+            model_name="habit",
+            name="complete_time",
+            field=models.TimeField(
+                blank=True, null=True, verbose_name="Время выполнения"
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='habit_time',
-            field=models.TimeField(blank=True, null=True, verbose_name='Время привычки'),
+            model_name="habit",
+            name="habit_time",
+            field=models.TimeField(
+                blank=True, null=True, verbose_name="Время привычки"
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='is_nice_habit',
-            field=models.BooleanField(default=False, verbose_name='Признак приятной привычки'),
+            model_name="habit",
+            name="is_nice_habit",
+            field=models.BooleanField(
+                default=False, verbose_name="Признак приятной привычки"
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='linked_habit',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='habit.habit', verbose_name='Связанная привычка'),
+            model_name="habit",
+            name="linked_habit",
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="habit.habit",
+                verbose_name="Связанная привычка",
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='owner',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='Создатель привычки'),
+            model_name="habit",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Создатель привычки",
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='periodicity',
-            field=models.SmallIntegerField(blank=True, default=1, null=True, verbose_name='Периодичность в днях'),
+            model_name="habit",
+            name="periodicity",
+            field=models.SmallIntegerField(
+                blank=True, default=1, null=True, verbose_name="Периодичность в днях"
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='place',
-            field=models.CharField(blank=True, max_length=150, null=True, verbose_name='Место привычки'),
+            model_name="habit",
+            name="place",
+            field=models.CharField(
+                blank=True, max_length=150, null=True, verbose_name="Место привычки"
+            ),
         ),
         migrations.AlterField(
-            model_name='habit',
-            name='reward',
-            field=models.TextField(blank=True, null=True, verbose_name='Вознаграждение за выполнение'),
+            model_name="habit",
+            name="reward",
+            field=models.TextField(
+                blank=True, null=True, verbose_name="Вознаграждение за выполнение"
+            ),
         ),
     ]

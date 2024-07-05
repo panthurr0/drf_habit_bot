@@ -15,30 +15,111 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='NiceHabit',
+            name="NiceHabit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Habit',
+            name="Habit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('place', models.CharField(blank=True, help_text='Место привычки', max_length=150, null=True)),
-                ('habit_time', models.TimeField(blank=True, help_text='Время привычки', null=True)),
-                ('action', models.CharField(blank=True, help_text='Действие', null=True)),
-                ('is_nice_habit', models.BooleanField(blank=True, help_text='Признак приятной привычки', null=True)),
-                ('periodicity', models.SmallIntegerField(blank=True, default=1, help_text='Периодичность в днях', null=True)),
-                ('reward', models.TextField(blank=True, help_text='Вознаграждение за выполнение', null=True)),
-                ('complete_time', models.TimeField(blank=True, help_text='Время выполнения', null=True)),
-                ('is_public', models.BooleanField(blank=True, null=True, verbose_name='Признак публичности')),
-                ('is_active', models.BooleanField(blank=True, null=True, verbose_name='Признак активности')),
-                ('linked_habit', models.OneToOneField(blank=True, help_text='Связанная привычка', null=True, on_delete=django.db.models.deletion.SET_NULL, to='habit.habit')),
-                ('user', models.ForeignKey(blank=True, help_text='Создатель привычки', null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "place",
+                    models.CharField(
+                        blank=True,
+                        help_text="Место привычки",
+                        max_length=150,
+                        null=True,
+                    ),
+                ),
+                (
+                    "habit_time",
+                    models.TimeField(blank=True, help_text="Время привычки", null=True),
+                ),
+                (
+                    "action",
+                    models.CharField(blank=True, help_text="Действие", null=True),
+                ),
+                (
+                    "is_nice_habit",
+                    models.BooleanField(
+                        blank=True, help_text="Признак приятной привычки", null=True
+                    ),
+                ),
+                (
+                    "periodicity",
+                    models.SmallIntegerField(
+                        blank=True,
+                        default=1,
+                        help_text="Периодичность в днях",
+                        null=True,
+                    ),
+                ),
+                (
+                    "reward",
+                    models.TextField(
+                        blank=True, help_text="Вознаграждение за выполнение", null=True
+                    ),
+                ),
+                (
+                    "complete_time",
+                    models.TimeField(
+                        blank=True, help_text="Время выполнения", null=True
+                    ),
+                ),
+                (
+                    "is_public",
+                    models.BooleanField(
+                        blank=True, null=True, verbose_name="Признак публичности"
+                    ),
+                ),
+                (
+                    "is_active",
+                    models.BooleanField(
+                        blank=True, null=True, verbose_name="Признак активности"
+                    ),
+                ),
+                (
+                    "linked_habit",
+                    models.OneToOneField(
+                        blank=True,
+                        help_text="Связанная привычка",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="habit.habit",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        help_text="Создатель привычки",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Привычка',
-                'verbose_name_plural': 'Привычки',
+                "verbose_name": "Привычка",
+                "verbose_name_plural": "Привычки",
             },
         ),
     ]

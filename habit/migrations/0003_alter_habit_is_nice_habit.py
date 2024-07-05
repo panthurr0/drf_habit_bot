@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('habit', '0002_delete_nicehabit'),
+        ("habit", "0002_delete_nicehabit"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='habit',
-            name='is_nice_habit',
-            field=models.BooleanField(default=False, help_text='Признак приятной привычки'),
+            model_name="habit",
+            name="is_nice_habit",
+            field=models.BooleanField(
+                default=False, help_text="Признак приятной привычки"
+            ),
         ),
     ]

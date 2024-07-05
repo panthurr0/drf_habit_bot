@@ -24,6 +24,7 @@ class User(AbstractUser):
         max_length=100,
         **NULLABLE
     )
+    tg_id =
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
