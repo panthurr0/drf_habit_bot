@@ -21,9 +21,13 @@ def make_schedule(habit):
         crontab=schedule,
         name=f"Send notification user: {habit.owner}, action: {habit.action}",
         task="habit.tasks.send_notification",
-        kwargs=dumps({"chat_id": habit.owner.tg_id,
-                      "message": f"Привет, {habit.owner}! Время для привычки: {habit.action}"}
-                     ),
+        kwargs=dumps(
+            {
+                "chat_id": habit.owner.tg_id,
+                "message": f"Привет, {habit.owner}! "
+                           f"Время для привычки: {habit.action}",
+            }
+        ),
     )
 
 
@@ -32,4 +36,7 @@ def send_telegram_message(chat_id, message):
         "text": message,
         "chat_id": chat_id,
     }
-    get(f"{settings.TELEGRAM_URL}{settings.TELEGRAM_TOKEN}/sendMessage", params=params)
+    get(
+        f"{settings.TELEGRAM_URL}{settings.TELEGRAM_TOKEN}/sendMessage",
+        params=params
+    )
