@@ -131,5 +131,9 @@ CELERY_BEAT_SCHEDULE = {
     "send_notification": {
         "task": "habit.tasks.send_notification",
         "schedule": timedelta(seconds=30),
+        "kwargs": {
+            "chat_id": "chat_id",
+            "message": "message",
+        }
     },
 }
