@@ -5,6 +5,6 @@
 
 logins:
 
-    username: bla
+    email: bla
     pw: 111
     perms: su
