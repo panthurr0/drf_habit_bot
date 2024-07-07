@@ -38,11 +38,20 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("habit.urls", namespace="habit")),
     path("users/", include("users.urls", namespace="users")),
+
     # swagger
     path(
         "swagger/",
-        schema_view.with_ui("swagger", cache_timeout=0),
-        name="schema-swagger-ui",
+        schema_view.with_ui(
+            "swagger",
+            cache_timeout=0),
+        name="schema-swagger-ui"
     ),
-    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+    path(
+        "redoc/",
+        schema_view.with_ui(
+            "redoc",
+            cache_timeout=0),
+        name="schema-redoc"
+    ),
 ]

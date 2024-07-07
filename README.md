@@ -5,6 +5,6 @@
 
 logins:
 
-    log: bla@mail.ru
+    username: bla
     pw: 111
     perms: su
