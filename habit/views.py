@@ -1,11 +1,16 @@
-from rest_framework.generics import (CreateAPIView, DestroyAPIView,
-                                     ListAPIView, RetrieveAPIView,
-                                     UpdateAPIView)
+from rest_framework.generics import (
+    CreateAPIView,
+    DestroyAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+)
 from rest_framework.permissions import IsAdminUser
 
 from habit.models import Habit
 from habit.paginators import HabitPaginator
 from habit.serializers import HabitSerializer
+from habit.services import make_schedule
 from users.permission import IsOwner
 
 
@@ -14,7 +19,9 @@ class HabitCreateApiView(CreateAPIView):
 
     def perform_create(self, serializer):
         """Привязывает привычку к текущему пользователю."""
-        serializer.save(owner=self.request.user)
+        u = self.request.user
+        habit = serializer.save(owner=u)
+        make_schedule(habit)
 
 
 class HabitListApiView(ListAPIView):
