@@ -1,3 +1,5 @@
+from json import dumps
+
 from requests import get
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
 
@@ -19,8 +21,9 @@ def make_schedule(habit):
         crontab=schedule,
         name=f"Send notification user: {habit.owner}, action: {habit.action}",
         task="habit.tasks.send_notification",
-        kwargs={"chat_id": habit.owner.tg_id,
-                "message": f"Привет, {habit.owner}! Время для привычки: {habit.action}"},
+        kwargs=dumps({"chat_id": habit.owner.tg_id,
+                      "message": f"Привет, {habit.owner}! Время для привычки: {habit.action}"}
+                     ),
     )
 
 

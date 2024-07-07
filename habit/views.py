@@ -18,7 +18,10 @@ class HabitCreateApiView(CreateAPIView):
     serializer_class = HabitSerializer
 
     def perform_create(self, serializer):
-        """Привязывает привычку к текущему пользователю."""
+        """
+        Привязывает привычку к текущему пользователю
+        make_schedule создаёт таску в celery_beat.
+        """
         u = self.request.user
         habit = serializer.save(owner=u)
         make_schedule(habit)
