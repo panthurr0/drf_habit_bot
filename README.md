@@ -2,7 +2,7 @@
 
  В 2018 году Джеймс Клир написал книгу «Атомные привычки», которая посвящена приобретению новых полезных привычек и искоренению старых плохих привычек. Заказчик прочитал книгу, впечатлился и обратился к вам с запросом реализовать трекер полезных привычек. В проекте реализована бэкенд-часть SPA веб-приложения.
 
-## Стэк
+## Стэк:
 <div>
    <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain.svg" alt="django" width="40" height="40"/>&nbsp;
    <img src="https://github.com/devicons/devicon/blob/master/icons/djangorest/djangorest-original-wordmark.svg" alt="djangorest" width="40" height="40"/>&nbsp;
@@ -18,7 +18,7 @@
 [тесты](habit/tests.py)
 
 
-## Getting started
+## Getting started:
 1. Установка зависимостей:
 `pip install -r requirements.txt`
 2. Создать файл "/.env" и описать в нем все значения из "/.env-sample"
