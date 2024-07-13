@@ -23,7 +23,7 @@ class HabitTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Habit.objects.all().count(), 2)
 
-    def test_habit_list(self):  # todo: сделать какиенибудь фикстурки тут
+    def test_habit_list(self):
         """Тестирование списка привычек."""
         url = reverse("habit:habit-list")
         response = self.client.get(url)
