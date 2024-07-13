@@ -13,9 +13,9 @@
 В проекте, при создании привычки от авторизированного пользователя HabitCreateApiView создаётся таска в Celery-beat, 
 которая отправляет запрос телеграму, а он уведомляет пользователя о привычке
 
-[посмотреть настройки Celery-beat](config/settings.py) 
-
+[посмотреть настройки Celery-beat](config/settings.py)
 [HabitCreateApiView](habit/views.py/)
+[тесты](habit/tests.py)
 
 
 ## Getting started
