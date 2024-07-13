@@ -21,15 +21,15 @@
 
 
 ## Getting started:
-1. Установка зависимостей:
+1. Установка зависимостей:\
 `pip install -r requirements.txt`
 2. Создать файл "/.env" и описать в нем все значения из "/.env-sample"
-3. Применение миграций:
-   `python manage.py migrate`
-4. Создание суперпользователя:
-   `python manage.py csu`
-5. Запуск приложения:
-   `python manage.py runserver`
+3. Применение миграций:\
+`python manage.py migrate`
+4. Создание суперпользователя:\
+`python manage.py csu`
+5. Запуск приложения:\
+`python manage.py runserver`
 
 Пример запроса создания привычки
    `{
