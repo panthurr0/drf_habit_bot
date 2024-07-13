@@ -18,7 +18,7 @@
 [HabitCreateApiView](habit/views.py/)
 
 
-### Getting started
+## Getting started
 1. Установка зависимостей:
 `pip install -r requirements.txt`
 2. Создать файл "/.env" и описать в нем все значения из "/.env-sample"
