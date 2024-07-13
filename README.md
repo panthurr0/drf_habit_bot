@@ -7,8 +7,16 @@
    <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain.svg" alt="django" width="40" height="40"/>&nbsp;
    <img src="https://github.com/devicons/devicon/blob/master/icons/djangorest/djangorest-original-wordmark.svg" alt="djangorest" width="40" height="40"/>&nbsp;
    <img src="https://github.com/devicons/devicon/blob/master/icons/redis/redis-original-wordmark.svg" alt="redis" width="40" height="40"/>&nbsp;
+   <img src="https://github.com/devicons/devicon/blob/master/icons/swagger/swagger-original-wordmark.svg" alt="swagger" width="40" height="40"/>&nbsp;
    <img src="https://github.com/devicons/devicon/blob/master/icons/pytest/pytest-original-wordmark.svg" alt="pytest" width="40" height="40"/>
 </div>
+В проекте, при создании привычки от авторизированного пользователя HabitCreateApiView создаётся таска в Celery-beat, 
+которая отправляет запрос телеграму, а он уведомляет пользователя о привычке
+
+[посмотреть настройки Celery-beat](config/settings.py) 
+
+[HabitCreateApiView](habit/views.py/)
+
 
 ### Getting started
 1. Установка зависимостей:
