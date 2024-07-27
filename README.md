@@ -26,15 +26,10 @@
 
 ## Getting started:
 
-1. Установка зависимостей:\
-   `pip install -r requirements.txt`
-2. Создать файл "/.env" и описать в нем все значения из "/.env-sample"
-3. Применение миграций:\
-   `python manage.py migrate`
-4. Создание суперпользователя:\
-   `python manage.py csu`
-5. Запуск приложения:\
-   `python manage.py runserver`
+1. Установка зависимостей(команда применит зависимости, а также установит миграции):\
+   `docker compose up --build -d`
+2. Адрес для доступа: \
+http://localhost:8000/
 
 Пример запроса создания привычки
 `{
